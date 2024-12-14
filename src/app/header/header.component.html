@@ -1,0 +1,17 @@
+<header>
+  <div class="header">
+    <div class="header-left">
+      <img src="assets/header/tortilla2.png" alt="Tortilla Icon" class="header-icon" />
+    </div>
+    <div class="header-center">
+      <h1 class="header-title">
+        El Precio de la Tortilla</h1>
+      </div>
+    <div class="header-right">
+      <img src="assets/header/corn2.png" alt="Corn Icon" class="header-icon" />
+    </div>
+  </div>
+  <div class="custom-separator">
+    <img *ngFor="let item of alternatingImages" [src]="item" alt="separator-dot" />
+  </div>
+</header>

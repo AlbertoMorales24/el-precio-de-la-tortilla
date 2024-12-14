@@ -1,0 +1,171 @@
+<ion-grid>
+  <ion-row class="description-row">
+    <p class="description-text">
+      Aquí encontrarás un análisis detallado sobre el precio de la tortilla en México a lo largo de los años, destacando su importancia fundamental en la cultura mexicana y su impacto como reflejo de la economía del país. Este estudio se llevó a cabo utilizando un conjunto de datos obtenido de <a href="https://www.kaggle.com/datasets/richave/tortilla-prices-in-mexico" target="_blank">Kaggle</a>, aplicando técnicas de manipulación de datos para generar representaciones visuales claras y precisas. A través de este análisis, se busca ofrecer una perspectiva única sobre cómo este alimento básico influye en la vida diaria y en la economía mexicana.
+    </p>
+  </ion-row>
+  <ion-row>
+    <ion-item lines="none" class="custom-item">
+      <ion-label class="custom-label">Ordenar por:</ion-label>
+      <ion-select class="custom-select" [formControl]="orderBy" placeholder="Select" (ionChange)="onOrderChange($event)">
+        <ion-select-option value="name">Nombre</ion-select-option>
+        <ion-select-option value="localStore">Tiendas Locales</ion-select-option>
+        <ion-select-option value="retailStore">Cadenas Comerciales</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-row>
+  <ion-row>
+    <iframe *ngIf="orderBy.value === 'name'"  src="assets/fig1/sortedName.html" width="100%" height="500"></iframe>
+    <iframe *ngIf="orderBy.value === 'localStore'"  src="assets/fig1/sortedMP.html" width="100%" height="500"></iframe>
+    <iframe *ngIf="orderBy.value === 'retailStore'"  src="assets/fig1/sortedBR.html" width="100%" height="500"></iframe>
+  </ion-row>
+  <ion-row class="description-row">
+    <p class="description-text">
+      En esta sección, se presenta un análisis histórico de los precios de la tortilla en México, desglosado por estados y tipos de establecimientos, incluyendo grandes cadenas de retail y pequeñas tiendas locales. Este enfoque permite observar las diferencias regionales y las dinámicas entre los distintos canales de venta, ofreciendo una visión integral de cómo este alimento esencial refleja las realidades económicas y sociales a lo largo del tiempo.
+    </p>
+  </ion-row>
+  <!-- Row 1 -->
+  <ion-row style="margin-bottom: -5px; margin-left: 10px;">
+    <ion-item lines="none" class="custom-item">
+      <ion-label class="custom-label">Estado:</ion-label>
+      <ion-select class="custom-select" [formControl]="stateBy" placeholder="Select" (ionChange)="onOrderChangeFig2State($event)">
+        <ion-select-option *ngFor="let state of states" [value]="state">
+          {{ state }}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item lines="none" class="custom-item">
+      <ion-label class="custom-label">Tienda:</ion-label>
+      <ion-select class="custom-select" [formControl]="storeBy" placeholder="Select" (ionChange)="onOrderChangeFig2Store($event)">
+        <ion-select-option *ngFor="let store of stores" [value]="store">
+          {{ store }}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+   </ion-row>
+  <ion-row>
+    <ion-col size="8" size-md="8" size-sm="12" size-xs="12">
+      <iframe [src]="fig2Src" width="99%" height="500"></iframe>
+    </ion-col>
+    <ion-col
+      size="4"
+      size-md="4"
+      size-sm="12"
+      size-xs="12"
+      style="
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      ">
+      <p class="styled-text" *ngIf="storeBy.value === 'Todo'" >{{statesAnalysis[stateSelected]}}</p>
+      <p class="styled-text" *ngIf="storeBy.value === 'Tiendas Locales'" >{{momAndPopAnalysis[stateSelected]}}</p>
+      <p class="styled-text" *ngIf="storeBy.value === 'Cadenas Comerciales'" >{{bigRetailAnalysis[stateSelected]}}</p>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <div class="custom-separator">
+      <img *ngFor="let item of alternatingImages" [src]="item" alt="separator-dot" />
+    </div>
+  </ion-row>
+
+  <!-- Row 2 -->
+  <ion-row style="margin-bottom: -5px; margin-left: 10px;">
+    <ion-item lines="none" class="custom-item">
+      <ion-label class="custom-label">Estados:</ion-label>
+      <ion-select class="custom-select" [formControl]="stateFig3By" placeholder="Select" (ionChange)="onOrderChangeFig3State($event)">
+        <ion-select-option *ngFor="let state of statesFig3" [value]="state">
+          {{ state }}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item lines="none" class="custom-item">
+      <ion-label class="custom-label">Tienda:</ion-label>
+      <ion-select class="custom-select" [formControl]="storeFig3By" placeholder="Select" (ionChange)="onOrderChangeFig3Store($event)">
+        <ion-select-option *ngFor="let store of storesFig3" [value]="store">
+          {{ store }}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-item lines="none" class="custom-item">
+      <ion-label class="custom-label">Velocidad:</ion-label>
+      <ion-select class="custom-select" [formControl]="speedFig3By" placeholder="Select" (ionChange)="onOrderChangeFig3Speed($event)">
+        <ion-select-option *ngFor="let speed of speedsFig3" [value]="speed">
+          {{ speed }}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-row>
+  <ion-row>
+    <iframe [src]="fig3Src" width="100%" height="500"></iframe>
+  </ion-row>
+  <ion-row>
+    <!-- Left Column -->
+    <ion-col size="6" class="left-col">
+      <img src="assets/tortillaAsk.png" alt="Tortilla Ask" />
+    </ion-col>
+
+    <!-- Right Column -->
+    <ion-col size="6" class="right-col">
+      <h2 style="color: black; font-family: 'Caveat', cursive; size: 46px;">
+        Donde deberias comprar tus tortillas?.
+      </h2>
+    </ion-col>
+  </ion-row>
+  <ion-row style="margin-bottom: -5px; margin-left: 10px;">
+    <ion-col size="6" size-md="6" size-sm="12" size-xs="12" class="fig4Filter">
+      <ion-item lines="none" class="custom-item">
+        <ion-label class="custom-label">Año:</ion-label>
+        <ion-select class="custom-select" [formControl]="yearFig4By" placeholder="Select" (ionChange)="onOrderChangeFig4Year($event)">
+          <ion-select-option *ngFor="let year of yearsFig4" [value]="year">
+            {{ year }}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item lines="none" class="custom-item">
+        <ion-label class="custom-label">Tienda:</ion-label>
+        <ion-select class="custom-select" [formControl]="storeFig4By" placeholder="Select" (ionChange)="onOrderChangeFig4Store($event)">
+          <ion-select-option *ngFor="let store of storesFig4" [value]="store">
+            {{ store }}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-col>
+    <ion-col size="6" size-md="6" size-sm="12" size-xs="12" class="fig4Filter">
+      <ion-item lines="none" class="custom-item">
+        <ion-label class="custom-label">Año:</ion-label>
+        <ion-select class="custom-select" [formControl]="yearFig4_2By" placeholder="Select" (ionChange)="onOrderChangeFig4_2Year($event)">
+          <ion-select-option *ngFor="let year of yearsFig4" [value]="year">
+            {{ year }}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item lines="none" class="custom-item">
+        <ion-label class="custom-label">Tienda:</ion-label>
+        <ion-select class="custom-select" [formControl]="storeFig4_2By" placeholder="Select" (ionChange)="onOrderChangeFig4_2Store($event)">
+          <ion-select-option *ngFor="let store of storesFig4" [value]="store">
+            {{ store }}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col size="6" size-md="6" size-sm="12" size-xs="12">
+      <iframe [src]="fig4Src" width="96%" height="520"></iframe>
+    </ion-col>
+    <ion-col
+      size="6"
+      size-md="6"
+      size-sm="12"
+      size-xs="12">
+      <iframe [src]="fig4_2Src" width="96%" height="520"></iframe>
+    </ion-col>
+  </ion-row>
+  <ion-row class="description-row">
+    <p class="description-text">
+      Estos mapas de calor permiten observar claramente cómo, en las tiendas locales, los precios de las tortillas tienden a disminuir a medida que se acercan al centro del país, mientras que los precios más altos se encuentran en las regiones cercanas a las fronteras. Por otro lado, en las cadenas comerciales, los precios muestran una tendencia diferente: disminuyen conforme se avanza hacia el sur. Es decir, los precios más altos se concentran en las zonas cercanas a la frontera con Estados Unidos. Este análisis resalta las diferencias en las dinámicas de precios entre los distintos tipos de establecimientos y regiones geográficas.
+    </p>
+  </ion-row>
+</ion-grid>

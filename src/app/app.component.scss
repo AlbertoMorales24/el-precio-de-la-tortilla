@@ -1,0 +1,23 @@
+/* Main layout container */
+.layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* Full height of the viewport */
+  margin: 0;
+}
+
+/* Header styles */
+app-header {
+  flex: 0 0 auto; /* Fixed height */
+}
+
+/* Content area */
+.content-wrapper {
+  flex: 1 1 auto; /* Fills the remaining space */
+  overflow-y: auto; /* Adds scroll if content overflows */
+}
+
+/* Footer styles */
+app-footer {
+  flex: 0 0 auto; /* Fixed height */
+}

@@ -1,0 +1,63 @@
+.header {
+  display: flex;
+  justify-content: space-between; /* Space between items */
+  align-items: center; /* Center items vertically */
+  padding: 0 1rem; /* Add some horizontal padding */
+  height: 60px; /* Set header height */
+  background: linear-gradient(to right, #ffffff 0%, #f4d4a3 50%, #f9e07f 100%);
+  color: #000; /* Text color to ensure good contrast */
+  box-sizing: border-box; /* Include padding in dimensions */
+}
+
+.header-left,
+.header-center,
+.header-right {
+  flex: 1; /* All divs take equal space */
+  display: flex; /* Enable flexbox on each div */
+  align-items: center; /* Center items vertically */
+  justify-content: center; /* Center items horizontally */
+  height: 60px; /* Set height for the divs */
+  padding: 15px;
+}
+
+
+.header-left {
+  text-align: left; /* Align left content to the left */
+}
+
+.header-right {
+  text-align: right; /* Align right content to the right */
+}
+
+.header-icon {
+  height: 60px; /* Set a fixed height */
+  width: auto; /* Maintain the aspect ratio */
+}
+
+.header-title {
+  font-size: 36px;
+  font-weight: bold;
+  color: #333;
+  text-align: center;
+  font-family: 'Caveat', cursive;
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap; /* Prevent text wrapping */
+}
+
+.custom-separator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px; /* Spacing between images */
+  overflow: hidden;
+  background: linear-gradient(to right, #ffffff 0%, #f4d4a3 50%, #f9e07f 100%);
+}
+
+.custom-separator img {
+  width: 30px; /* Adjust size as needed */
+  height: 30px;
+  object-fit: contain;
+}
+

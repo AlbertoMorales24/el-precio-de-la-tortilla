@@ -1,0 +1,101 @@
+.header {
+  display: flex;
+  justify-content: space-between; /* Space between items */
+  align-items: center; /* Center items vertically */
+  padding: 1rem 1rem; /* Add some horizontal padding */
+  height: 60px; /* Set header height */
+  background-color: #2C3E50; /* Dark slate blue */
+  color: #000; /* Text color to ensure good contrast */
+  box-sizing: border-box; /* Include padding in dimensions */
+}
+
+.header-left,
+.header-center,
+.header-right {
+  flex: 1; /* All divs take equal space */
+  display: flex; /* Enable flexbox on each div */
+  align-items: center; /* Center items vertically */
+  justify-content: center; /* Center items horizontally */
+  height: 60px; /* Set height for the divs */
+  padding: 15px;
+}
+
+
+.header-left {
+  text-align: left; /* Align left content to the left */
+}
+
+.header-right {
+  text-align: right; /* Align right content to the right */
+}
+
+.header-icon {
+  height: 40px; /* Set a fixed height */
+  width: auto; /* Maintain the aspect ratio */
+}
+
+.header-title {
+  font-size: 12px;
+  font-weight: bold;
+  color: #EAECEE; /* Light gray text for visibility */
+  font-family: 'Roboto', sans-serif; /* Modern, clean font */
+  text-align: center;
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap; /* Prevent text wrapping */
+}
+
+.custom-separator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px; /* Spacing between images */
+  overflow: hidden;
+  background: linear-gradient(to right, #ffffff 0%, #f4d4a3 50%, #f9e07f 100%);
+}
+
+.custom-separator img {
+  width: 20px; /* Adjust size as needed */
+  height: 20px;
+  object-fit: contain;
+}
+
+ion-button {
+  --background: linear-gradient(90deg, #f9e07f, #f4d4a3); /* Gradient background */
+  --background-activated: #d6b579; /* Activated background for click */
+  --border-radius: 20px; /* Rounded corners */
+  --padding-start: 16px; /* Add padding */
+  --padding-end: 16px;
+  --padding-top: 8px;
+  --padding-bottom: 8px;
+  --color: #2c3e50; /* Dark slate text color */
+  --box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  --font-size: 14px; /* Adjust font size for clarity */
+  --font-weight: bold; /* Bold text */
+  font-family: 'Roboto', sans-serif; /* Match header font */
+  text-transform: uppercase; /* Consistent header style */
+  margin: 0 8px; /* Add some spacing */
+  transition: transform 0.2s ease; /* Smooth hover animation */
+}
+
+ion-button:hover {
+  transform: translateY(-2px); /* Slight lift effect on hover */
+}
+
+ion-button:focus {
+  outline: none; /* Remove focus outline */
+  box-shadow: 0 0 8px rgba(255, 223, 186, 0.8); /* Glow on focus */
+}
+
+ion-button[disabled] {
+  --background: #cccccc; /* Disabled background */
+  --color: #666666; /* Disabled text color */
+  --box-shadow: none; /* No shadow */
+}
+
+.footer-icon {
+  height: 20px; /* Set a fixed height */
+  width: auto; /* Maintain the aspect ratio */
+}
+
